@@ -1,6 +1,5 @@
 package dev.zio.quickstart.users
 
-import io.getquill.context.ZioJdbc.DataSourceLayer
 import io.getquill.jdbczio.Quill
 import io.getquill.{Escape, H2ZioJdbcContext}
 import zio._
