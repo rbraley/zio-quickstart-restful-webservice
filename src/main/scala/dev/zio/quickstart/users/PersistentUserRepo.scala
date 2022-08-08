@@ -1,6 +1,7 @@
 package dev.zio.quickstart.users
 
 import io.getquill.context.ZioJdbc.DataSourceLayer
+import io.getquill.jdbczio.Quill
 import io.getquill.{Escape, H2ZioJdbcContext}
 import zio._
 
@@ -46,6 +47,6 @@ case class PersistentUserRepo(ds: DataSource) extends UserRepo {
 
 object PersistentUserRepo {
   def layer: ZLayer[Any, Throwable, PersistentUserRepo] =
-    DataSourceLayer.fromPrefix("UserApp") >>>
+    Quill.DataSource.fromPrefix("UserApp") >>>
       ZLayer.fromFunction(PersistentUserRepo(_))
 }
